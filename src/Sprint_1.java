@@ -18,7 +18,7 @@ public class Sprint_1 {
                     break;
                 case 2:
                     int CustomerId=Sc.nextInt();
-                    SearchCustomerById(CustomerId);
+                    SearchCustomerByIdWrapper(CustomerId);
                     break;
                 case 3:
                     Sc.nextLine();
@@ -61,22 +61,29 @@ public class Sprint_1 {
         if(nRowEffected>0) return "Customer Registration is Successful";
         else return "Customer Cant Be Inserted";
     }
-    public static ResultSet SearchCustomerById(int CustId) throws SQLException {
+    public static void SearchCustomerById(int CustId) throws SQLException {
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement","","");
         PreparedStatement St=Con.prepareStatement("SELECT * FROM Customer WHERE CustomerId=?");
         St.setInt(1,CustId);
         ResultSet Output=St.executeQuery();
+        while(Output.next()){
+            System.out.println(Output.getInt(1)+" "+Output.getString(2)+" "+Output.getString(3)+" "+Output.getString(4)+" "+Output.getString(5)+" "+Output.getString(6)+" "+Output.getString(7)+" "+Output.getString(8));
+        }
+        Output.close();
         Con.close();
-        return Output;
+
     }
-    public static ResultSet SearchByEmailDomain(String EmailDomain) throws SQLException {
+    public static void SearchByEmailDomain(String EmailDomain) throws SQLException {
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement","","");
         PreparedStatement St=Con.prepareStatement("SELECT * FROM Customer WHERE LOWER(Email) LIKE ? ORDER BY CustomerId");
         String LikeStatement="%@"+EmailDomain+".com";
         St.setString(1,EmailDomain);
         ResultSet Output=St.executeQuery();
+        while(Output.next()){
+            System.out.println(Output.getInt(1)+" "+Output.getString(2)+" "+Output.getString(3));
+        }
+        Output.close();
         Con.close();
-        return Output;
     }
     public static int GenerateRandomNumber(){
        return (int) (1000000+ Math.random()*9000000);
