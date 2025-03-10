@@ -76,7 +76,7 @@ public class Sprint_1 {
     public static void SearchByEmailDomain(String EmailDomain) throws SQLException {
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement","","");
         PreparedStatement St=Con.prepareStatement("SELECT * FROM Customer WHERE LOWER(Email) LIKE ? ORDER BY CustomerId");
-        String LikeStatement="%@"+EmailDomain+".com";
+        String LikeStatement="%@"+EmailDomain+"%";
         St.setString(1,EmailDomain);
         ResultSet Output=St.executeQuery();
         while(Output.next()){
