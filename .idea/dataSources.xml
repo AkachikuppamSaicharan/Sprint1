@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="AkachikuppamSaiCharan_ElectricityManagement" uuid="a445e49d-acf7-4041-8864-8fe200e0f3c7">
+      <driver-ref>derby.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>ILP_Electricity_Management</remarks>
+      <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
+      <jdbc-url>jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
