@@ -18,7 +18,7 @@ public class Sprint_1 {
                     break;
                 case 2:
                     int CustomerId=Sc.nextInt();
-                    SearchCustomerByIdWrapper(CustomerId);
+                    SearchCustomerById(CustomerId);
                     break;
                 case 3:
                     Sc.nextLine();
