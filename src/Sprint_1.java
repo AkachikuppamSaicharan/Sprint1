@@ -45,7 +45,7 @@ public class Sprint_1 {
         String NomineeName=Sc.nextLine();
         String RelWithCust=Sc.nextLine();
         System.out.println(CustomerId+" "+CustomerName+" "+Address+" "+ContactNo+" "+NomineeName+" "+RelWithCust);
-        Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement","","");
+        Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
         String Statement="INSERT INTO Customer VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement St=Con.prepareStatement(Statement);
         St.setInt(1,CustomerId);
