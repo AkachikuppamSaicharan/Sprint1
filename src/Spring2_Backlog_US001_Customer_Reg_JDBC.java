@@ -49,16 +49,16 @@ public class Spring2_Backlog_US001_Customer_Reg_JDBC {
         System.out.println("Password: "+Password);
         System.out.println("Confirm Password: "+ConfirmPassword);
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
-        String Statement="INSERT INTO Sprint2_US001_Customer  VALUES(?,?,?,?,?,?,?,?)";
+        String Statement="INSERT INTO Sprint2_US001_Customer  VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement St=Con.prepareStatement(Statement);
         St.setLong(1, ConsumerId);
         St.setInt(2, BillNo);
-        St.setString(3, CustomerName);
-        St.setString(4, Email);
-        St.setLong(5, MobileNo);
-        St.setString(6, UserId);
-        St.setString(7, Password);
-        St.setString(8, ConfirmPassword);
+        St.setString(4, CustomerName);
+        St.setString(5, Email);
+        St.setLong(6, MobileNo);
+        St.setString(7, UserId);
+        St.setString(8, Password);
+        St.setString(9, ConfirmPassword);
         int nRowEffected=St.executeUpdate();
         if(nRowEffected>0){System.out.println("Customer Registration is Successful");}
         else {System.out.println("Customer Registration is Unsuccessful");}
