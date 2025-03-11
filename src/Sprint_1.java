@@ -34,7 +34,7 @@ public class Sprint_1 {
             }
         }
     }
-    public static String InsertCustomer() throws SQLException {
+    public static void InsertCustomer() throws SQLException {
         Sc.nextLine();
         int CustomerId=GenerateRandomNumber();
         String CustomerName=Sc.nextLine();
@@ -44,7 +44,7 @@ public class Sprint_1 {
         String ContactNo=Sc.nextLine();
         String NomineeName=Sc.nextLine();
         String RelWithCust=Sc.nextLine();
-        System.out.println(CustomerId+" "+CustomerName+" "+Address+" "+ContactNo+" "+NomineeName+" "+RelWithCust);
+//        System.out.println(CustomerId+" "+CustomerName+" "+Address+" "+ContactNo+" "+NomineeName+" "+RelWithCust);
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
         String Statement="INSERT INTO Customer VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement St=Con.prepareStatement(Statement);
@@ -58,8 +58,8 @@ public class Sprint_1 {
         St.setString(8,RelWithCust);
         int nRowEffected=St.executeUpdate();
         Con.close();
-        if(nRowEffected>0) return "Customer Registration is Successful.";
-        else return "Customer Cant Be Inserted.";
+        if(nRowEffected>0) System.out.println( "Customer Registration is Successful.");
+        else System.out.println( "Customer Can't Be Inserted.");
     }
     public static void SearchCustomerById(int CustId) throws SQLException {
         int nC=0;
