@@ -22,7 +22,7 @@ CREATE TABLE Sprint2_US001_Customer(
      UserId VARCHAR(20) NOT NULL UNIQUE,
      Password VARCHAR(30) NOT NULL,
      ConfirmPassword VARCHAR(30) NOT NULL,
-     FOREIGN KEY (BillNo) REFERENCES BillDetails(BillNo)
+    CONSTRAINT Fkey FOREIGN KEY (BillNo) REFERENCES BillDetails(BillNo)
 );
 CREATE TABLE BillDetails(
     BillNo NUMERIC(5) PRIMARY KEY,

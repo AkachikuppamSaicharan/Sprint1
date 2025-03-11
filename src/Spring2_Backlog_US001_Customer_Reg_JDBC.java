@@ -1,13 +1,12 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Spring2_Backlog_US001_Customer_Reg_JDBC {
     static Scanner Sc=new Scanner(System.in);
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws SQLException {
+        CreateTable();
+        InsertCustomer();
+        SelectCustomer();
     }
     public static void CreateTable() throws SQLException {
         Connection Con = DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement\"");
@@ -21,7 +20,7 @@ public class Spring2_Backlog_US001_Customer_Reg_JDBC {
                 "    UserId VARCHAR(20) NOT NULL UNIQUE,\n" +
                 "    Password VARCHAR(30) NOT NULL,\n" +
                 "    ConfirmPassword VARCHAR(30) NOT NULL\n" +
-                ");";
+                ")";
         PreparedStatement Stmt = Con.prepareStatement(CreateTable);
         int nR = Stmt.executeUpdate();
         if (nR == 0) System.out.println("Table Successfully Created");
@@ -41,20 +40,40 @@ public class Spring2_Backlog_US001_Customer_Reg_JDBC {
         String UserId=Sc.nextLine();
         String Password=Sc.nextLine();
         String ConfirmPassword=Sc.nextLine();
+        System.out.println("Consumer ID: "+ConsumerId);
+        System.out.println("Bill No: "+BillNo);
+        System.out.println("Customer Name: "+CustomerName);
+        System.out.println("Email: "+Email);
+        System.out.println("Mobile No: "+MobileNo);
+        System.out.println("User ID: "+UserId);
+        System.out.println("Password: "+Password);
+        System.out.println("Confirm Password: "+ConfirmPassword);
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
-        String Statement="INSERT INTO Sprint2_US001_Customer  VALUES(?,?,?,?,?,?,?,?,?)";
+        String Statement="INSERT INTO Sprint2_US001_Customer  VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement St=Con.prepareStatement(Statement);
-        St.setLong(1,ConsumerId);
-        St.setString(2,CustomerName);
-        St.setString(3,Email);
-        St.setLong(4,MobileNo);
-        St.setString(5,UserId);
-        St.setString(6,Password);
-        St.setString(7,ConfirmPassword);
-        St.setLong(8,BillNo);
+        St.setLong(1, ConsumerId);
+        St.setInt(2, BillNo);
+        St.setString(3, CustomerName);
+        St.setString(4, Email);
+        St.setLong(5, MobileNo);
+        St.setString(6, UserId);
+        St.setString(7, Password);
+        St.setString(8, ConfirmPassword);
         int nRowEffected=St.executeUpdate();
         if(nRowEffected>0){System.out.println("Customer Registration is Successful");}
         else {System.out.println("Customer Registration is Unsuccessful");}
+    }
+    public static void SelectCustomer() throws SQLException{
+        Connection Con=DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
+        String Statement="SELECT * FROM Sprint2_US001_Customer";
+        PreparedStatement Stmt=Con.prepareStatement(Statement);
+        ResultSet Output=Stmt.executeQuery();
+        while(Output.next()){
+            System.out.println(Output.getLong(1));
+        }
+        Output.close();
+        Stmt.close();
+        Con.close();
     }
 
 }
