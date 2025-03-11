@@ -7,6 +7,7 @@ public class Spring2_Backlog_US001_Customer_Reg_JDBC {
         CreateTable();
         InsertCustomer();
         SelectCustomer();
+        DropTable();
     }
     public static void CreateTable() throws SQLException {
         Connection Con = DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement\"");
@@ -32,6 +33,9 @@ public class Spring2_Backlog_US001_Customer_Reg_JDBC {
     public static void InsertCustomer() throws SQLException {
         long ConsumerId=Sc.nextLong();
         int BillNo=Sc.nextInt();
+        String[] Titles={"Mr","Ms","Mrs","Dr","Prof"};
+        System.out.println("Select The Title From the Below:\n(1):Mr\n(2):Ms\n(3):Mrs\n(4):Dr\n(5):Prof");
+        int TitlesIndex=Sc.nextInt();
         Sc.nextLine();
         String CustomerName=Sc.nextLine();
         String Email=Sc.nextLine();
@@ -40,19 +44,20 @@ public class Spring2_Backlog_US001_Customer_Reg_JDBC {
         String UserId=Sc.nextLine();
         String Password=Sc.nextLine();
         String ConfirmPassword=Sc.nextLine();
-        System.out.println("Consumer ID: "+ConsumerId);
-        System.out.println("Bill No: "+BillNo);
-        System.out.println("Customer Name: "+CustomerName);
-        System.out.println("Email: "+Email);
-        System.out.println("Mobile No: "+MobileNo);
-        System.out.println("User ID: "+UserId);
-        System.out.println("Password: "+Password);
-        System.out.println("Confirm Password: "+ConfirmPassword);
+//        System.out.println("Consumer ID: "+ConsumerId);
+//        System.out.println("Bill No: "+BillNo);
+//        System.out.println("Customer Name: "+CustomerName);
+//        System.out.println("Email: "+Email);
+//        System.out.println("Mobile No: "+MobileNo);
+//        System.out.println("User ID: "+UserId);
+//        System.out.println("Password: "+Password);
+//        System.out.println("Confirm Password: "+ConfirmPassword);
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
         String Statement="INSERT INTO Sprint2_US001_Customer  VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement St=Con.prepareStatement(Statement);
         St.setLong(1, ConsumerId);
         St.setInt(2, BillNo);
+        St.setString(3, Titles[TitlesIndex-1]);
         St.setString(4, CustomerName);
         St.setString(5, Email);
         St.setLong(6, MobileNo);
@@ -68,12 +73,33 @@ public class Spring2_Backlog_US001_Customer_Reg_JDBC {
         String Statement="SELECT * FROM Sprint2_US001_Customer";
         PreparedStatement Stmt=Con.prepareStatement(Statement);
         ResultSet Output=Stmt.executeQuery();
+        System.out.println("CustomerId  | Bill Number | Title | Customer Name | Email | Mobile No | UserId | Password | ConfirmPassword");
         while(Output.next()){
-            System.out.println(Output.getLong(1));
+            System.out.println(Output.getLong(1)+"|"+Output.getInt(2)+"|"+Output.getString(3)+"|"+Output.getString(4)+"|"+Output.getString(5)+"|"+Output.getLong(6)+"|"+Output.getString(7)+"|"+Output.getString(8)+"|"+Output.getString(9));
         }
         Output.close();
         Stmt.close();
         Con.close();
     }
+    public static void DropTable() throws SQLException {
+        Connection Con=DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
+        String Statement="DROP TABLE Sprint2_US001_Customer";
+        PreparedStatement Stmt=Con.prepareStatement(Statement);
+        Stmt.execute();
+        Stmt.close();
+        Con.close();
+    }
 
 }
+
+/*
+1578984512154
+98664
+1
+A.SAI CHARAN
+akachikuppamsaicharan@gmail.com
+7989591890
+Akach
+Akach
+Akach
+ */
