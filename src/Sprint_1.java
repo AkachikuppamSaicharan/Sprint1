@@ -58,10 +58,11 @@ public class Sprint_1 {
         St.setString(8,RelWithCust);
         int nRowEffected=St.executeUpdate();
         Con.close();
-        if(nRowEffected>0) return "Customer Registration is Successful";
-        else return "Customer Cant Be Inserted";
+        if(nRowEffected>0) return "Customer Registration is Successful.";
+        else return "Customer Cant Be Inserted.";
     }
     public static void SearchCustomerById(int CustId) throws SQLException {
+        int nC=0;
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement","","");
         PreparedStatement St=Con.prepareStatement("SELECT * FROM Customer WHERE CustomerId=?");
         St.setInt(1,CustId);
@@ -69,19 +70,22 @@ public class Sprint_1 {
         while(Output.next()){
             System.out.println(Output.getInt(1)+" "+Output.getString(2)+" "+Output.getString(3)+" "+Output.getString(4)+" "+Output.getString(5)+" "+Output.getString(6)+" "+Output.getString(7)+" "+Output.getString(8));
         }
+        if(nC==0){System.out.println("No Such Customer Exist With the Given Customer Id.");return;}
         Output.close();
         Con.close();
-
     }
     public static void SearchByEmailDomain(String EmailDomain) throws SQLException {
+        int nC=0;
         Connection Con= DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement","","");
         PreparedStatement St=Con.prepareStatement("SELECT * FROM Customer WHERE LOWER(Email) LIKE ? ORDER BY CustomerId");
-        String LikeStatement="%@"+EmailDomain+"%";
-        St.setString(1,EmailDomain);
+        String LikeStatement="%@"+EmailDomain.toLowerCase()+"%";
+        St.setString(1,LikeStatement);
         ResultSet Output=St.executeQuery();
         while(Output.next()){
             System.out.println(Output.getInt(1)+" "+Output.getString(2)+" "+Output.getString(3));
+            nC++;
         }
+        if(nC==0){System.out.println("No Such Customer Registered With "+EmailDomain);return;}
         Output.close();
         Con.close();
     }
