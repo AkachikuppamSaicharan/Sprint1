@@ -6,6 +6,7 @@ public class Sprint_2_US002_Bill_Details_JDBC {
     public static void main(String[] args) throws SQLException {
         CreateBillTable();
         CreateCustomerTable();
+        DropTable();
 
     }
     public static void CreateCustomerTable() throws SQLException {
