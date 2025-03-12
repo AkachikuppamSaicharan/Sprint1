@@ -11,3 +11,7 @@ CREATE TABLE BillDetails(
     CustomerNumber NUMERIC(13),
     Constraint Fkey FOREIGN KEY(CustomerNumber) REFERENCES US002_Customer(CustomerNumber)
 );
+
+SELECT B.CustomerNumber,C.CustomerName,B.PayableAmount,B.DueAmount
+FROM BillDetails AS B,US002_Customer AS C
+WHERE B.CustomerNumber=C.CustomerNumber;
