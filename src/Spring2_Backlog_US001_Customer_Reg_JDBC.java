@@ -5,12 +5,12 @@ public class Spring2_Backlog_US001_Customer_Reg_JDBC {
     static Scanner Sc=new Scanner(System.in);
     public static void main(String[] args) throws SQLException {
         CreateTable();
-        InsertCustomer();
+        for(int i=1;i<=5;i++){InsertCustomer();}
         SelectCustomer();
         DropTable();
     }
     public static void CreateTable() throws SQLException {
-        Connection Con = DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement\"");
+        Connection Con = DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
         String CreateTable = "CREATE TABLE Sprint2_US001_Customer(\n" +
                 "    ConsumerId NUMERIC(13) PRIMARY KEY,\n" +
                 "    BillNo NUMERIC(5) NOT NULL UNIQUE,\n" +
