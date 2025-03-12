@@ -1,3 +1,4 @@
+C:\Users\Akach\.jdks\openjdk-23.0.2\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\lib\idea_rt.jar=50263" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\Akach\IdeaProjects\Akach_2734953_Electricity_Management\out\production\Akach_2734953_Electricity_Management;C:\Users\Akach\IdeaProjects\Akach_2734953_Electricity_Management\db-derby-10.17.1.0-bin\lib\derby.jar Sprint_2_US002_Bill_Details_JDBC
 Table Customer Successfully Created
 Table Bill Successfully Created
 1014784532123
@@ -60,14 +61,26 @@ A.HARI CHARAN happafasa@gmail.com 7895178950
 1000
 7895123647896
 75466 10000.0 1000.0 7895123647896
+77756
+12000.85
+675.231014784532123
+1014784532123
+77756 12000.85 675.2310147845321 1014784532123
 22248
 50.00
 1.00
 1478987895123
 22248 50.0 1.0 1478987895123
-77756
-12000.85
-675.231014784532123
-1014784532123
-77756 12000.85 675.23 1014784532123
 Bill Details Successfully Stored
+1014784532123 A.SAI CHARAN 1200.72 157.88
+1014784532123 A.SAI CHARAN 1578.32 700.89
+1478987895123 T.Poornima 1800.65 560.32
+1478987895123 T.Poornima 9750.55 1000.0
+1478523694512 B.Charvi Sri 8847.88 2500.0
+1478523694512 B.Charvi Sri 500.72 76.33
+7895123647896 A.HARI CHARAN 672.23 45.72
+7895123647896 A.HARI CHARAN 10000.0 1000.0
+1014784532123 A.SAI CHARAN 12000.85 675.23
+1478987895123 T.Poornima 50.0 1.0
+
+Process finished with exit code 0

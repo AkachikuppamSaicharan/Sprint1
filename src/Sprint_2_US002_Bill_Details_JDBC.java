@@ -104,8 +104,8 @@ public class Sprint_2_US002_Bill_Details_JDBC {
     public static void QueryBillDetails() throws SQLException{
         Connection Con=DriverManager.getConnection("jdbc:derby:AkachikuppamSaiCharan_ElectricityManagement");
         String Statement="SELECT B.CustomerNumber,C.CustomerName,B.PayableAmount,B.DueAmount\n" +
-                "FROM BillDetails AS B,US002_Customer AS C\n" +
-                "WHERE B.CustomerNumber=C.CustomerNumber";
+                "FROM BillDetails AS B JOIN US002_Customer AS C\n" +
+                "ON B.CustomerNumber=C.CustomerNumber";
         PreparedStatement Stmt=Con.prepareStatement(Statement);
         ResultSet rs=Stmt.executeQuery();
         while(rs.next()){
